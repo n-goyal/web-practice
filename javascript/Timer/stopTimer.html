@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>StopWatch</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style>
+		body, .jumbotron{
+			padding: 20px;
+		}
+		.timer{
+			font-size: 120px;
+		}
+	</style>
+</head>
+<body>
+	<div class='jumbotron text-center'>
+		<!-- timer -->
+		<div class="timer">
+			<span class="minutes">00</span> :<span class="seconds">00</span> 
+		</div>
+		<!-- timer buttons -->
+		<div class="timer-btn">
+			<button class="btn btn-lg btn-success" data-action="start">
+				Start
+			</button>
+			<button class="btn btn-lg btn-danger" data-action="stop">
+				Stop
+			</button> 
+			<button class="btn btn-lg btn-primary" data-action="reset">
+				Reset
+			</button>
+		</div>
+	</div>
+
+	<script>
+		const startButton = document.querySelector('[data-action="start"]');
+		const stopButton = document.querySelector('[data-action="stop"]');
+		const resetButton = document.querySelector('[data-action="reset"]');
+		const minutes = document.querySelector('.minutes');
+		const seconds = document.querySelector('.seconds');
+		let timerTime = 00;
+		let interval;
+		// to stop runnin timer twice
+		isRunning = false;
+
+		function startTimer() {
+			if (isRunning) return;
+			isRunning = true;
+			interval = setInterval(incrementTimer, 1000);
+		}
+
+		function stopTimer() {
+			if(!isRunning) return;
+			isRunning = false;
+			clearInterval(interval);
+		}
+
+		function resetTimer() {
+			stopTimer();
+			minutes.innerText = '00';
+			timerTime = 0;
+			seconds.innerText = '00';
+		}
+
+		function incrementTimer()  {
+			timerTime++;
+
+			const totalMinutes = Math.floor(timerTime / 60);
+			const totalSeconds = timerTime % 60;
+
+			minutes.innerText = pad(totalMinutes);
+			seconds.innerText = pad(totalSeconds);
+			console.log('hello', timerTime);
+		}
+
+		function pad(number) {
+			return (number < 10) ? '0' + number : number;
+			// if (number < 10) {
+			// 	return '0' + number;
+			// }
+			// else{
+			// 	return number;
+			// }
+		}
+
+		startButton.addEventListener('click', startTimer);
+		stopButton.addEventListener('click', stopTimer);
+		resetButton.addEventListener('click', resetTimer);
+	</script>
+
+</body>
+</html>

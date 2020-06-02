@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>First snippets page</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		* {
+			color: 
+		}
+	</style>
+</head>
+<body>
+	
+<script>
+
+	//object
+	const user = {
+		userName: 'n-goyal',
+		name: 'nitin'
+	};
+	console.log(user.name);
+
+	//array
+	let x = ['nitin', 'goyal'];
+	console.log(x);;
+
+	// array of objects
+	const superUsers = [
+		user1 = {
+			name: 'nitingoyal'
+		},
+		user2 = {
+			name: 'deepeshagrawal'
+		}
+	]
+	console.log('superUsers: ', superUsers);
+
+	/*VARIABLES*/
+	var things = 'first';	// should not be used anymore
+	const otherThing = 'second';	// cannot be reassigned
+	let otherOtherThing = 'thrid'
+
+	console.log(otherOtherThing);
+	console.log(otherThing);
+
+	// otherThing = 'newValue'; => throw error
+
+	// but const object property is allowed to reassigned
+	let myVariable;
+	console.log(myVariable); 
+
+	myVariable = 'something'
+	console.log(myVariable);
+
+</script>
+</body>
+</html>
